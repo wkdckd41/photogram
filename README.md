@@ -15,7 +15,7 @@ Springboot + JPA를 이용한 SNS 웹사이트 프로젝트
 2. 프로젝트 환경 구성
 
 - JDK 11
-- MariaDB
+- MariaDB 10.7
 - Springboot2.6.6
 - AOP
 - QLRM
