@@ -2,6 +2,7 @@ package com.cos.photogramstart.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
@@ -10,7 +11,10 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 public class SecurityConfig extends WebSecurityConfigurerAdapter{
 
 	@Override
-	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+	protected void configure(HttpSecurity http) throws Exception {
 		// super 삭제 - 기존 시큐리티가 가지고 있는 기능이 다 비활성화 상태가됨
+		http.authorizeRequests()
+			.antMatchers("/","/user/**","/image/**","/subscribe/**","/,comment/**").authenticated()
+			.anyRequest().permitAll();
 	}
 }
