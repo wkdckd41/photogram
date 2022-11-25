@@ -46,7 +46,9 @@ public class AuthController {
 			
 			for(FieldError error : bindingResult.getFieldErrors()) {
 				errorMap.put(error.getField(),error.getDefaultMessage());
+				System.out.println("===================================");
 				System.out.println(error.getDefaultMessage());
+				System.out.println("===================================");
 			}
 		}
 		
