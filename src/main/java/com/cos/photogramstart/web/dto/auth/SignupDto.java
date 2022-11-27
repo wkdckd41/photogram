@@ -11,6 +11,7 @@ import lombok.Data;
 public class SignupDto {
 	// https://bamdule.tistory.com/35(@Valid 어노테이션 종류)
 	@Max(20)
+	@NotBlank
 	private String username;
 	@NotBlank
 	private String password;
