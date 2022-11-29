@@ -10,9 +10,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-
 import com.cos.photogramstart.domain.user.User;
+import com.cos.photogramstart.handler.ex.CustomValidationException;
 import com.cos.photogramstart.service.Authservice;
 import com.cos.photogramstart.web.dto.auth.SignupDto;
 
@@ -40,16 +39,16 @@ public class AuthController {
 	// 회원가입버튼 -> /auth/signup -> /auth/signin
 	// 회원가입버튼 X
 	@PostMapping("/auth/signup")
-	public @ResponseBody String signup(@Valid SignupDto signupdto, BindingResult bindingResult) { // key = value (x-www-form-urlencoded)
+	public  String signup(@Valid SignupDto signupdto, BindingResult bindingResult) { // key = value (x-www-form-urlencoded)
 		
 		if(bindingResult.hasErrors()) {
 			Map<String,String> errorMap = new HashMap<>();
 			
 			for(FieldError error : bindingResult.getFieldErrors()) {
 				errorMap.put(error.getField(),error.getDefaultMessage());
-
+				System.out.println(error.getDefaultMessage());
 			}
-			return"오류남";
+			throw new CustomValidationException("유효성검사 실패함", errorMap);
 		}else {
 			// User < - SignupDto
 			User user = signupdto.toEntity(); 
