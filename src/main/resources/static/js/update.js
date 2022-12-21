@@ -17,7 +17,8 @@ function update(userId, event) {
 	}).fail(error=>{ // HttpStatus 상태코드 200번대가 아닐때
 		if(error.data == null){
 			alert(error.responseJSON.message);
+		}else{
+			alert(JSON.stringify( error.responseJSON.data));
 		}
-		alert(JSON.stringify( error.responseJSON.data));
 	});
 }
