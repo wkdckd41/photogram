@@ -37,11 +37,11 @@ public class Subscribe {
 	@GeneratedValue(strategy = GenerationType.IDENTITY) // 번호 증가 전략이 데이터베이스를 따라간다.
 	private int id;
 	
-	@JoinColumn(name= "fromUserld") // 이렇게 컬럼명 만들어! 니 맘대로 만들지 말고!!
+	@JoinColumn(name= "fromUserId") // 이렇게 컬럼명 만들어! 니 맘대로 만들지 말고!!
 	@ManyToOne
 	private User fromUser;
 	
-	@JoinColumn(name= "toUserld")
+	@JoinColumn(name= "toUserId")
 	@ManyToOne
 	private User toUser;
 	
