@@ -8,7 +8,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @EnableWebSecurity // 해당 파일로 시큐리티를 활성화
-@Configuration // loc
+@Configuration // IoC
 public class SecurityConfig extends WebSecurityConfigurerAdapter{
 
 	@Bean
@@ -21,7 +21,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		// super 삭제 - 기존 시큐리티가 가지고 있는 기능이 다 비활성화 상태가됨
 		http.csrf().disable();
 		http.authorizeRequests()
-			.antMatchers("/","/user/**","/image/**","/subscribe/**","/comment/**").authenticated()
+			.antMatchers("/", "/user/**", "/image/**", "/subscribe/**", "/comment/**", "/api/**").authenticated()
 			.anyRequest().permitAll()
 			.and()
 			.formLogin()
