@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +10,6 @@
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
 </head>
-
 <body>
     <div class="container">
         <main class="loginMain">
@@ -22,7 +20,7 @@
                    <!--로그인 폼-->
                    <div class="login__form">
                         <h1><img src="/images/logo.jpg" alt=""></h1>
-                        
+
                         <!--로그인 인풋-->
                         <form class="login__input"  action="/auth/signin" method="POST">
                             <input type="text" name="username" placeholder="유저네임" required="required" />
@@ -61,5 +59,4 @@
         
     </div>
 </body>
-
 </html>
