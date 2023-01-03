@@ -10,7 +10,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
 
-import com.cos.photogramstart.domain.Subscribe.Subscribe;
 import com.cos.photogramstart.domain.user.User;
 
 import lombok.AllArgsConstructor;
