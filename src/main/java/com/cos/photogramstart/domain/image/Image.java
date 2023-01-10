@@ -31,7 +31,7 @@ public class Image {
 	
 	@JoinColumn(name = "userId")
 	@ManyToOne
-	private User user;
+	private User user; // 1, 1
 	
 	// 이미지 좋아요
 	
