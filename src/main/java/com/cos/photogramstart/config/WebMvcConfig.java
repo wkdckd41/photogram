@@ -1,15 +1,15 @@
 package com.cos.photogramstart.config;
 
-import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.resource.PathResourceResolver;
 
-@Configurable
-public class WebMvcConfig implements WebMvcConfigurer{ // web 설정파일
-	
-	@Value("${file.path}}")
+@Configuration
+public class WebMvcConfig implements WebMvcConfigurer{ // web 설정 파일
+
+	@Value("${file.path}")
 	private String uploadFolder;
 	
 	@Override
