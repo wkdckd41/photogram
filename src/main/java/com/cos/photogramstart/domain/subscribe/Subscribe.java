@@ -1,4 +1,4 @@
-package com.cos.photogramstart.domain.Subscribe;
+package com.cos.photogramstart.domain.subscribe;
 
 import java.time.LocalDateTime;
 
@@ -27,21 +27,21 @@ import lombok.NoArgsConstructor;
 @Table(
 		uniqueConstraints = {
 				@UniqueConstraint(
-					name="subscribe_uk",
-					columnNames = {"fromUserId","toUserId"}
+						name="subscribe_uk",
+						columnNames = {"fromUserId", "toUserId"}
 				)
 		}
 )
 public class Subscribe {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY) // 번호 증가 전략이 데이터베이스를 따라간다.
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@JoinColumn(name= "fromUserId") // 이렇게 컬럼명 만들어! 니 맘대로 만들지 말고!!
+	@JoinColumn(name = "fromUserId") // 이렇게 컬럼명 만들어! 니 맘대로 만들지 말고!!
 	@ManyToOne
 	private User fromUser;
 	
-	@JoinColumn(name= "toUserId")
+	@JoinColumn(name = "toUserId")
 	@ManyToOne
 	private User toUser;
 	
@@ -52,3 +52,5 @@ public class Subscribe {
 		this.createDate = LocalDateTime.now();
 	}
 }
+
+
