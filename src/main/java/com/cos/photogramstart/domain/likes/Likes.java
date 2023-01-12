@@ -38,7 +38,7 @@ public class Likes { // N
 	@GeneratedValue(strategy = GenerationType.IDENTITY) 
 	private int id;
 	
-	// 오류가 터지고 나서 잡아봅시다.
+	// 무한 참조됨
 	@JoinColumn(name = "imageId")
 	@ManyToOne
 	private Image image; // 1
