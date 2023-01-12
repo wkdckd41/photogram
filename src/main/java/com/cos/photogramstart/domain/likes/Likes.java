@@ -29,13 +29,13 @@ import lombok.NoArgsConstructor;
 		uniqueConstraints = {
 				@UniqueConstraint(
 						name="likes_uk",
-						columnNames = {"imageId", "UserId"}
+						columnNames = {"imageId", "userId"}
 				)
 		}
 )
 public class Likes { // N
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY) // 번호 증가 전략이 데이터베이스를 따라간다.
+	@GeneratedValue(strategy = GenerationType.IDENTITY) 
 	private int id;
 	
 	// 오류가 터지고 나서 잡아봅시다.
