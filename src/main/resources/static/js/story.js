@@ -1,31 +1,31 @@
-	/**	
-	2. 스토리 페이지	
-	(1) 스토리 로드하기	
-	(2) 스토리 스크롤 페이징하기	
-	(3) 좋아요, 안좋아요	
-	(4) 댓글쓰기	
-	(5) 댓글삭제	
- */	
+/**	
+2. 스토리 페이지	
+(1) 스토리 로드하기	
+(2) 스토리 스크롤 페이징하기	
+(3) 좋아요, 안좋아요	
+(4) 댓글쓰기	
+(5) 댓글삭제	
+*/
 // (0) 현재 로긴한 사용자 아이디	
-let principalId = $("#principalId").val();	
+let principalId = $("#principalId").val();
 // (1) 스토리 로드하기	
-let page = 0;	
-function storyLoad() {	
-	$.ajax({	
-		url: `/api/image?page=${page}`,	
-		dataType: "json"	
-	}).done(res => {	
+let page = 0;
+function storyLoad() {
+	$.ajax({
+		url: `/api/image?page=${page}`,
+		dataType: "json"
+	}).done(res => {
 		//console.log(res);	
-		res.data.content.forEach((image)=>{	
-			let storyItem = getStoryItem(image);	
-			$("#storyList").append(storyItem);	
-		});	
-	}).fail(error => {	
-		console.log("오류", error);	
-	});	
-}	
-storyLoad();	
-function getStoryItem(image) {	
+		res.data.content.forEach((image) => {
+			let storyItem = getStoryItem(image);
+			$("#storyList").append(storyItem);
+		});
+	}).fail(error => {
+		console.log("오류", error);
+	});
+}
+storyLoad();
+function getStoryItem(image) {
 	let item = `<div class="story-list__item">	
 	<div class="sl__item__header">	
 		<div>	
@@ -39,16 +39,16 @@ function getStoryItem(image) {
 	</div>	
 	<div class="sl__item__contents">	
 		<div class="sl__item__contents__icon">	
-			<button>`;	
-			     	
-			     if(image.likeState){	
-					item += `<i class="fas fa-heart active" id="storyLikeIcon-${image.id}" onclick="toggleLike(${image.id})"></i>`;	
-				}else{	
-					item += `<i class="far fa-heart" id="storyLikeIcon-${image.id}" onclick="toggleLike(${image.id})"></i>`;	
-				}	
-					
-			
-		item += `	
+			<button>`;
+
+	if (image.likeState) {
+		item += `<i class="fas fa-heart active" id="storyLikeIcon-${image.id}" onclick="toggleLike(${image.id})"></i>`;
+	} else {
+		item += `<i class="far fa-heart" id="storyLikeIcon-${image.id}" onclick="toggleLike(${image.id})"></i>`;
+	}
+
+
+	item += `	
 			</button>	
 		</div>
 
@@ -102,14 +102,45 @@ $(window).scroll(() => {
 // (3) 좋아요, 안좋아요
 function toggleLike(imageId) {
 	let likeIcon = $(`#storyLikeIcon-${imageId}`);
-	if (likeIcon.hasClass("far")) {
-		likeIcon.addClass("fas");
-		likeIcon.addClass("active");
-		likeIcon.removeClass("far");
-	} else {
-		likeIcon.removeClass("fas");
-		likeIcon.removeClass("active");
-		likeIcon.addClass("far");
+
+	if (likeIcon.hasClass("far")) { // 좋아요를 하겠다
+
+		$.ajax({
+			type: "post",
+			url: `/api/image/${imageId}/likes`,
+			dataType: "json"
+		}).done(res => {
+			
+			let likeCountStr = $(`#storyLikeCount-${image.id}`).text();
+			console.log("좋아요 카운트", likeCountStr);
+			
+			likeIcon.addClass("fas");
+			likeIcon.addClass("active");
+			likeIcon.removeClass("far");
+		}).fail(error => {
+			console.log("오류", error);
+		});
+
+
+
+
+	} else { // 좋아요를  취소하겠다
+
+		$.ajax({
+			type: "delete",
+			url: `/api/image/${imageId}/likes`,
+			dataType: "json"
+		}).done(res => {
+			
+			likeIcon.removeClass("fas");
+			likeIcon.removeClass("active");
+			likeIcon.addClass("far");
+		}).fail(error => {
+			console.log("오류", error);
+		});
+
+
+
 	}
 }
 
