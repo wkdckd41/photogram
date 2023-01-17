@@ -27,7 +27,7 @@
 		<div class="profile-right">
 			<div class="name-group">
 				<h2>${dto.user.name}</h2>
-
+				
 				<c:choose>
 					<c:when test="${dto.pageOwnerState}">
 						<button class="cta" onclick="location.href='/image/upload'">사진등록</button>
@@ -41,10 +41,12 @@
 								<button class="cta" onclick="toggleSubscribe(${dto.user.id}, this)">구독하기</button>
 							</c:otherwise>
 						</c:choose>
-
+						
+						
 					</c:otherwise>
 				</c:choose>
-
+				
+				
 				<button class="modi" onclick="popup('.modal-info')">
 					<i class="fas fa-cog"></i>
 				</button>
@@ -78,8 +80,8 @@
 			<div class="tab-1-content-inner">
 
 				<!--아이템들-->
-				<c:forEach var="image" items="${dto.user.images}">
-					<!--EL표현식에서 적으면 get함수가 자동 호출된다. -->
+
+				<c:forEach var="image" items="${dto.user.images}"> <!-- EL표현식에서 변수명을 적으면 get함수가 자동 호출된다. -->
 					<div class="img-box">
 						<a href=""> <img src="/upload/${image.postImageUrl}" />
 						</a>
@@ -89,6 +91,8 @@
 						</div>
 					</div>
 				</c:forEach>
+
+
 				<!--아이템들end-->
 			</div>
 		</div>

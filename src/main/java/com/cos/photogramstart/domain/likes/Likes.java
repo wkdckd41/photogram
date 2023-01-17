@@ -14,6 +14,7 @@ import javax.persistence.UniqueConstraint;
 
 import com.cos.photogramstart.domain.image.Image;
 import com.cos.photogramstart.domain.user.User;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -35,14 +36,14 @@ import lombok.NoArgsConstructor;
 )
 public class Likes { // N
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY) 
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	// 무한 참조됨
 	@JoinColumn(name = "imageId")
 	@ManyToOne
 	private Image image; // 1
 	
+	@JsonIgnoreProperties({"images"})
 	@JoinColumn(name = "userId")
 	@ManyToOne
 	private User user; // 1
@@ -53,5 +54,6 @@ public class Likes { // N
 	public void createDate() {
 		this.createDate = LocalDateTime.now();
 	}
+
 
 }

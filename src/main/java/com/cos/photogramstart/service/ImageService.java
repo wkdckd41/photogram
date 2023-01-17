@@ -36,7 +36,7 @@ public class ImageService {
 			
 			image.getLikes().forEach((like) -> {
 				if(like.getUser().getId() == principalId) { // 해당 이미지에 좋아요한 사람들을 찾아서 현재 로그인 한 사람이 좋아요 한것인지 비교
-					image.setLikeStae(true);
+					image.setLikeState(true);
 				}
 			});
 			

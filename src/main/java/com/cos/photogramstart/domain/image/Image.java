@@ -51,7 +51,7 @@ public class Image { // N,  1
 	private LocalDateTime createDate;
 	
 	@Transient // DB에 칼럼이 만들어지지 않는다.
-	private boolean likeStae;
+	private boolean likeState;
 	
 	@Transient
 	private int likeCount;

@@ -103,27 +103,6 @@ function profileImageUpload() {
 	});
 }
 
-// (3) 유저 프로파일 사진 변경 (완)
-function profileImageUpload() {
-	$("#userProfileImageInput").click();
-
-	$("#userProfileImageInput").on("change", (e) => {
-		let f = e.target.files[0];
-
-		if (!f.type.match("image.*")) {
-			alert("이미지를 등록해야 합니다.");
-			return;
-		}
-
-		// 사진 전송 성공시 이미지 변경
-		let reader = new FileReader();
-		reader.onload = (e) => {
-			$("#userProfileImage").attr("src", e.target.result);
-		}
-		reader.readAsDataURL(f); // 이 코드 실행시 reader.onload 실행됨.
-	});
-}
-
 
 // (4) 사용자 정보 메뉴 열기 닫기
 function popup(obj) {
@@ -150,7 +129,6 @@ function modalClose() {
 	$(".modal-subscribe").css("display", "none");
 	location.reload();
 }
-
 
 
 
